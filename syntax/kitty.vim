@@ -5,9 +5,11 @@ syn match kittyForeground /^foreground/ display
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
+
+" remember to remove kitty_mod, background and foreground from the list
 syn keyword kittyKeyword
 \ active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template
-\ adjust_column_width adjust_line_height allow_hyperlinks allow_remote_control background
+\ adjust_column_width adjust_line_height allow_hyperlinks allow_remote_control
 \ background_image background_image_layout background_image_linear background_opacity background_tint
 \ bell_border_color bell_on_tab bold_font bold_italic_font box_drawing_scale
 \ clear_all_shortcuts click_interval clipboard_control close_on_child_death color0
@@ -67,9 +69,9 @@ syn keyword kittyKeyword
 \ default_pointer_shape detect_urls dim_opacity disable_ligatures draw_minimal_borders
 \ dynamic_background_opacity editor enable_audio_bell enabled_layouts env
 \ focus_follows_mouse font_family font_features font_size force_ltr
-\ foreground hide_window_decorations inactive_border_color inactive_tab_background inactive_tab_font_style
+\ hide_window_decorations inactive_border_color inactive_tab_background inactive_tab_font_style
 \ inactive_tab_foreground inactive_text_alpha initial_window_height initial_window_width input_delay
-\ italic_font kitten_alias kitty_mod linux_display_server listen_on
+\ italic_font kitten_alias linux_display_server listen_on
 \ macos_custom_beam_cursor macos_hide_from_tasks macos_option_as_alt macos_quit_when_last_window_closed macos_show_window_title_in
 \ macos_thicken_font macos_titlebar_color macos_traditional_fullscreen macos_window_resizable map
 \ mark1_background mark1_foreground mark2_background mark2_foreground mark3_background
