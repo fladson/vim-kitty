@@ -6,31 +6,84 @@ syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
 syn keyword kittyKeyword
-\ startup_session send_text terminal_select_modifiers cursor_stop_blinking_after pointer_shape_when_grabbed
-\ clear_all_shortcuts close_on_child_death symbol_map mouse_hide_wait bell_on_tab shell
-\ window_alert_on_bell url_style bold_font keymap inactive_tab_font_style key_definitions open_url_modifiers
-\ clipboard_control tab_fade draw_minimal_borders background_opacity select_by_word_characters open_url_with
-\ hide_window_decorations allow_remote_control remember_window_size box_drawing_scale macos_titlebar_color
-\ tab_title_template italic_font kitten_alias placement_strategy macos_thicken_font tab_separator
-\ macos_show_window_title_in_menubar tab_bar_style cursor_shape linux_display_server resize_debounce_time
-\ rectangle_select_modifiers macos_quit_when_last_window_closed kitten_aliases map inactive_text_alpha
-\ command_on_bell copy_on_select window_padding_width cursor_text_color active_border_color adjust_line_height
-\ bold_italic_font enabled_layouts inactive_border_color macos_traditional_fullscreen inactive_tab_foreground
-\ single_window_margin_width active_tab_background touch_scroll_multiplier strip_trailing_spaces font_size
-\ sequence_map initial_window_width tab_bar_margin_width initial_window_height input_delay
-\ update_check_interval repaint_delay bell_border_color font_family enable_audio_bell x11_hide_window_decorations
-\ scrollback_pager term macos_hide_titlebar resize_draw_strategy selection_foreground selection_background
-\ scrollback_lines editor macos_window_resizable macos_hide_from_tasks window_margin_width click_interval
-\ macos_show_window_title_in wheel_scroll_multiplier tab_bar_min_tabs window_border_width dynamic_background_opacity
-\ visual_bell_duration scrollback_pager_history_size tab_bar_edge env active_tab_font_style focus_follows_mouse
-\ active_tab_foreground window_resize_step_cells sync_to_monitor inactive_tab_background macos_option_as_alt url_color
-\ cursor disable_ligatures macos_custom_beam_cursor cursor_blink_interval dim_opacity adjust_column_width
-\ tab_switch_strategy window_resize_step_lines include default_pointer_shape pointer_shape_when_dragging
-\ active_tab_title_template listen_on force_ltr font_features cursor_beam_thickness cursor_underline_thickness
-\ url_prefixes detect_urls resize_in_steps confirm_os_window_close tab_activity_symbol tab_bar_background
-\ background_image background_image_layout background_image_linear background_tint mark1_foreground mark1_background 
-\ mark2_foreground mark2_background mark3_foreground mark3_background listen_on allow_hyperlinks 
-\ color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15
+\ active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template
+\ adjust_column_width adjust_line_height allow_hyperlinks allow_remote_control background
+\ background_image background_image_layout background_image_linear background_opacity background_tint
+\ bell_border_color bell_on_tab bold_font bold_italic_font box_drawing_scale
+\ clear_all_shortcuts click_interval clipboard_control close_on_child_death color0
+\ color1 color10 color100 color101 color102
+\ color103 color104 color105 color106 color107
+\ color108 color109 color11 color110 color111
+\ color112 color113 color114 color115 color116
+\ color117 color118 color119 color12 color120
+\ color121 color122 color123 color124 color125
+\ color126 color127 color128 color129 color13
+\ color130 color131 color132 color133 color134
+\ color135 color136 color137 color138 color139
+\ color14 color140 color141 color142 color143
+\ color144 color145 color146 color147 color148
+\ color149 color15 color150 color151 color152
+\ color153 color154 color155 color156 color157
+\ color158 color159 color16 color160 color161
+\ color162 color163 color164 color165 color166
+\ color167 color168 color169 color17 color170
+\ color171 color172 color173 color174 color175
+\ color176 color177 color178 color179 color18
+\ color180 color181 color182 color183 color184
+\ color185 color186 color187 color188 color189
+\ color19 color190 color191 color192 color193
+\ color194 color195 color196 color197 color198
+\ color199 color2 color20 color200 color201
+\ color202 color203 color204 color205 color206
+\ color207 color208 color209 color21 color210
+\ color211 color212 color213 color214 color215
+\ color216 color217 color218 color219 color22
+\ color220 color221 color222 color223 color224
+\ color225 color226 color227 color228 color229
+\ color23 color230 color231 color232 color233
+\ color234 color235 color236 color237 color238
+\ color239 color24 color240 color241 color242
+\ color243 color244 color245 color246 color247
+\ color248 color249 color25 color250 color251
+\ color252 color253 color254 color255 color26
+\ color27 color28 color29 color3 color30
+\ color31 color32 color33 color34 color35
+\ color36 color37 color38 color39 color4
+\ color40 color41 color42 color43 color44
+\ color45 color46 color47 color48 color49
+\ color5 color50 color51 color52 color53
+\ color54 color55 color56 color57 color58
+\ color59 color6 color60 color61 color62
+\ color63 color64 color65 color66 color67
+\ color68 color69 color7 color70 color71
+\ color72 color73 color74 color75 color76
+\ color77 color78 color79 color8 color80
+\ color81 color82 color83 color84 color85
+\ color86 color87 color88 color89 color9
+\ color90 color91 color92 color93 color94
+\ color95 color96 color97 color98 color99
+\ command_on_bell confirm_os_window_close copy_on_select cursor cursor_beam_thickness
+\ cursor_blink_interval cursor_shape cursor_stop_blinking_after cursor_text_color cursor_underline_thickness
+\ default_pointer_shape detect_urls dim_opacity disable_ligatures draw_minimal_borders
+\ dynamic_background_opacity editor enable_audio_bell enabled_layouts env
+\ focus_follows_mouse font_family font_features font_size force_ltr
+\ foreground hide_window_decorations inactive_border_color inactive_tab_background inactive_tab_font_style
+\ inactive_tab_foreground inactive_text_alpha initial_window_height initial_window_width input_delay
+\ italic_font kitten_alias kitty_mod linux_display_server listen_on
+\ macos_custom_beam_cursor macos_hide_from_tasks macos_option_as_alt macos_quit_when_last_window_closed macos_show_window_title_in
+\ macos_thicken_font macos_titlebar_color macos_traditional_fullscreen macos_window_resizable map
+\ mark1_background mark1_foreground mark2_background mark2_foreground mark3_background
+\ mark3_foreground mouse_hide_wait mouse_map open_url_with placement_strategy
+\ pointer_shape_when_dragging pointer_shape_when_grabbed remember_window_size repaint_delay resize_debounce_time
+\ resize_draw_strategy resize_in_steps scrollback_fill_enlarged_window scrollback_lines scrollback_pager
+\ scrollback_pager_history_size select_by_word_characters selection_background selection_foreground shell
+\ single_window_margin_width startup_session strip_trailing_spaces symbol_map sync_to_monitor
+\ tab_activity_symbol tab_bar_background tab_bar_edge tab_bar_margin_height tab_bar_margin_width
+\ tab_bar_min_tabs tab_bar_style tab_fade tab_powerline_style tab_separator
+\ tab_switch_strategy tab_title_template term touch_scroll_multiplier update_check_interval
+\ url_color url_prefixes url_style visual_bell_duration wayland_titlebar_color
+\ wheel_scroll_multiplier window_alert_on_bell window_border_width window_margin_width window_padding_width
+\ window_resize_step_cells window_resize_step_lines
 
 hi def link kittyComment Comment
 hi def link kittyTodo Todo
