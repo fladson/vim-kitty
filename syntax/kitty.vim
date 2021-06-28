@@ -1,16 +1,16 @@
+" Match keywords only at the start of the line. Must come before other rules
+" matching start of line
+syn match kittyKW '^\S*' contains=kittyKeyword
+
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
-syn match kittyMod /^kitty_mod/ display
-syn match kittyBackground /^background/ display
-syn match kittyForeground /^foreground/ display
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
 
-" remember to remove kitty_mod, background and foreground from the list
-syn keyword kittyKeyword
+syn keyword kittyKeyword contained
 \ active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template
 \ adjust_column_width adjust_line_height allow_hyperlinks allow_remote_control
-\ background_image background_image_layout background_image_linear background_opacity background_tint
+\ background background_image background_image_layout background_image_linear background_opacity background_tint
 \ bell_border_color bell_on_tab bold_font bold_italic_font box_drawing_scale
 \ clear_all_shortcuts click_interval clipboard_control close_on_child_death color0
 \ color1 color10 color100 color101 color102
@@ -68,7 +68,7 @@ syn keyword kittyKeyword
 \ cursor_blink_interval cursor_shape cursor_stop_blinking_after cursor_text_color cursor_underline_thickness
 \ default_pointer_shape detect_urls dim_opacity disable_ligatures draw_minimal_borders
 \ dynamic_background_opacity editor enable_audio_bell enabled_layouts env
-\ focus_follows_mouse font_family font_features font_size force_ltr
+\ focus_follows_mouse font_family font_features font_size force_ltr foreground
 \ hide_window_decorations inactive_border_color inactive_tab_background inactive_tab_font_style
 \ inactive_tab_foreground inactive_text_alpha initial_window_height initial_window_width input_delay
 \ italic_font kitten_alias linux_display_server listen_on
@@ -85,14 +85,16 @@ syn keyword kittyKeyword
 \ tab_switch_strategy tab_title_template term touch_scroll_multiplier update_check_interval
 \ url_color url_prefixes url_style visual_bell_duration wayland_titlebar_color
 \ wheel_scroll_multiplier window_alert_on_bell window_border_width window_margin_width window_padding_width
-\ window_resize_step_cells window_resize_step_lines
+\ window_resize_step_cells window_resize_step_lines kitty_mod
+
+syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
+syn match kittyActionKW '\s*\S*\s*' contained contains=kittyAction
+syn keyword kittyAction contained
 
 hi def link kittyComment Comment
 hi def link kittyTodo Todo
 hi def link kittyString String
 hi def link kittyKeyword Keyword
 hi def link kittyMod Keyword
-hi def link kittyBackground Keyword
-hi def link kittyForeground Keyword
 
 let b:current_syntax = "kitty"
