@@ -5,6 +5,7 @@ syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
+syn match kittyInclude /^include/ display
 
 " match map and mouse_map to highlight bindable actions
 syn match kittyMap '^\(mouse_\)\?map'
@@ -30,6 +31,7 @@ hi def link kittyKeybind Constant
 hi def link kittyMod Constant
 hi def link kittyInvalidAction Error
 hi def link kittyInvalidKeyword Error
+hi def link kittyInclude Include
 
 let b:current_syntax = "kitty"
 
