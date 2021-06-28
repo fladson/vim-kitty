@@ -1,6 +1,7 @@
 from kitty.conf.types import ShortcutMapping,Option,Group
 from kitty.options.definition import definition
 from kitty.options.utils import args_funcs
+from kitty.rc.base import all_command_names
 
 def find_options(group):
   opts = []
@@ -20,6 +21,7 @@ def find_options(group):
 
 all_opts, all_actions = find_options(definition.root_group)
 all_actions += args_funcs.keys()
+all_actions += all_command_names()
 
 all_opts = sorted(list(set(all_opts)))
 all_actions = sorted(list(set(all_actions)))
