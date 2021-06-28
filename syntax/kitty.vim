@@ -1,6 +1,6 @@
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
-syn match kittyKW '^\S*' contains=kittyKeyword
+syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
@@ -10,6 +10,7 @@ syn keyword kittyTodo contained TODO FIXME XXX contained
 syn match kittyMap '^\(mouse_\)\?map'
 			\ nextgroup=kittyKeybind
 
+syn match kittyInvalidKeyword '\S*' contained
 syn keyword kittyKeyword contained
 \ active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template
 \ adjust_column_width adjust_line_height allow_hyperlinks allow_remote_control
@@ -91,7 +92,8 @@ syn keyword kittyKeyword contained
 \ window_resize_step_cells window_resize_step_lines kitty_mod
 
 syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
-syn match kittyActionKW '\s*\S*\s*' contained contains=kittyAction
+syn match kittyActionKW '\s*\S*\s*' contained contains=kittyAction,kittyInvalidAction
+syn match kittyInvalidAction '\S*' contained
 syn keyword kittyAction contained
 \ change_font_size clear_terminal close_os_window close_tab close_window combine copy_to_buffer copy_to_clipboard
 \ debug_config decrease_background_opacity decrease_font_size detach_tab detach_window disable_ligatures_in
@@ -118,5 +120,7 @@ hi def link kittyAction Function
 hi def link kittyMap Keyword
 hi def link kittyKeybind Constant
 hi def link kittyMod Constant
+hi def link kittyInvalidAction Error
+hi def link kittyInvalidKeyword Error
 
 let b:current_syntax = "kitty"
