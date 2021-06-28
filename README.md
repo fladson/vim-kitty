@@ -19,6 +19,11 @@ the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 Plug 'fladson/vim-kitty'
 ```
 
+### packer
+```vim
+use "fladson/vim-kitty"
+```
+
 ### Manual
 
 Just clone the repo and copy the files to the proper folders.
