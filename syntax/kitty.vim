@@ -1,11 +1,14 @@
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
 syn match kittyKW '^\S*' contains=kittyKeyword
-
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
+
+" match map and mouse_map to highlight bindable actions
+syn match kittyMap '^\(mouse_\)\?map'
+			\ nextgroup=kittyKeybind
 
 syn keyword kittyKeyword contained
 \ active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template
@@ -90,11 +93,30 @@ syn keyword kittyKeyword contained
 syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
 syn match kittyActionKW '\s*\S*\s*' contained contains=kittyAction
 syn keyword kittyAction contained
+\ change_font_size clear_terminal close_os_window close_tab close_window combine copy_to_buffer copy_to_clipboard
+\ debug_config decrease_background_opacity decrease_font_size detach_tab detach_window disable_ligatures_in
+\ edit_config_file eighth_window fifth_window first_window fourth_window full_background_opacity goto_file_line
+\ goto_layout goto_tab increase_background_opacity increase_font_size input_unicode_character insert_selected_hash
+\ insert_selected_line insert_selected_path insert_selected_word kitten kitty_shell launch layout_action load_config_file
+\ mouse_selection move_tab_backward move_tab_forward move_window move_window_backward move_window_forward
+\ move_window_to_top neighboring_window new_os_window new_os_window_with_cwd new_tab new_tab_with_cwd new_window
+\ new_window_with_cwd next_layout next_tab next_window ninth_window nth_window open_selected_hyperlink open_selected_path
+\ open_url pass_selection_to_program paste_from_buffer paste_from_clipboard paste_from_selection pipe previous_tab
+\ previous_window reload_config_file remote_control reset_background_opacity reset_font_size reset_terminal resize_window
+\ run_kitten run_simple_kitten scroll_end scroll_home scroll_line_down scroll_line_up scroll_page_down scroll_page_up
+\ scroll_to_mark second_window send_text set_background_opacity set_colors set_font_size set_tab_title seventh_window
+\ show_scrollback signal_child sixth_window start_resizing_window tenth_window third_window toggle_fullscreen
+\ toggle_marker toggle_maximized
+
+syn keyword kittyMod contained ctrl alt shift cmd super hyper meta kitty_mod
 
 hi def link kittyComment Comment
 hi def link kittyTodo Todo
 hi def link kittyString String
 hi def link kittyKeyword Keyword
-hi def link kittyMod Keyword
+hi def link kittyAction Function
+hi def link kittyMap Keyword
+hi def link kittyKeybind Constant
+hi def link kittyMod Constant
 
 let b:current_syntax = "kitty"
