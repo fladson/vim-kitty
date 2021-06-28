@@ -6,7 +6,8 @@ Keywords based on v0.21.1
 
 ## File type detection
 
-For now, the automatic detection will only work for files named `kitty.conf`.
+Any *.conf files in kitty's configuration directory is considered.
+
 You can always add `# vim:ft=kitty` at the beginning of any file to make sure
 the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 
