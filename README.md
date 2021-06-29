@@ -2,11 +2,11 @@
 
 Syntax highlighting for Kitty terminal config files.
 
-Keywords based on v0.21.2
+Keywords based on `v0.21.2`
 
 ## File type detection
 
-Any *.conf files in kitty's configuration directory is considered.
+Any `*.conf` or `*.session` files in kitty's configuration directory is considered.
 
 You can always add `# vim:ft=kitty` at the beginning of any file to make sure
 the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
