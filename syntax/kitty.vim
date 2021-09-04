@@ -93,7 +93,7 @@ syn keyword kittyAction contained
  \ input_unicode_character kitten kitty_shell last_used_layout launch layout_action load_config_file mouse_click_url
  \ mouse_click_url_or_select mouse_selection move_tab_backward move_tab_forward move_window move_window_backward move_window_forward move_window_to_top
  \ neighboring_window new_os_window new_os_window_with_cwd new_tab new_tab_with_cwd new_window new_window_with_cwd next_layout
- \ next_tab next_window ninth_window nth_window open_url_with_hints pass_selection_to_program paste paste_from_buffer
+ \ next_tab next_window ninth_window no_op nth_window open_url_with_hints pass_selection_to_program paste paste_from_buffer
  \ paste_from_clipboard paste_from_selection paste_selection paste_selection_or_clipboard previous_tab previous_window quit remote_control
  \ remove_marker reset_window_sizes resize_window scroll_end scroll_home scroll_line_down scroll_line_up scroll_page_down
  \ scroll_page_up scroll_to_mark second_window select_tab send_text set_background_opacity set_colors set_tab_title
