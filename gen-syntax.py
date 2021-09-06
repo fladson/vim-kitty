@@ -1,3 +1,15 @@
+# to run the script, cd into the repo and run kitty +launch gen-syntax.py
+# debugging:
+#   print actions:
+#     kitty +runpy 'from kitty.actions import get_all_actions; actions =
+#     sorted(list({a.name for _, act_list in get_all_actions().items() for a in
+#     act_list})); print(actions)'
+#
+#   print options:
+#     kitty +runpy 'from kitty.config import
+#     option_names_for_completion;all_opts =
+#     sorted(list(set(option_names_for_completion()))); print(all_opts)'
+
 from kitty.actions import get_all_actions
 from kitty.config import option_names_for_completion
 
