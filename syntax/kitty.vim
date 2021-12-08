@@ -1,6 +1,9 @@
+syn match kittySt '.*$' contains=kittyNumber,kittyColor
+syn match kittyColor '#[^:].*' contained
+syn match kittyNumber '[0-9]\+\.\?[0-9]*' contained
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
-syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword
+syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
@@ -32,6 +35,8 @@ hi def link kittyMod Constant
 hi def link kittyInvalidAction Error
 hi def link kittyInvalidKeyword Error
 hi def link kittyInclude Include
+hi def link kittyColor Number
+hi def link kittyNumber Number
 
 let b:current_syntax = "kitty"
 
