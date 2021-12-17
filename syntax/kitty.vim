@@ -1,5 +1,5 @@
 syn match kittySt '.*$' contains=kittyNumber,kittyColor
-syn match kittyColor '#[^:].*' contained
+syn match kittyColor '#[0-9A-Fa-f]\{6,8}' contained
 syn match kittyNumber '[0-9]\+\.\?[0-9]*' contained
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
