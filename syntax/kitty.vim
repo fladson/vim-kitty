@@ -1,6 +1,7 @@
 syn match kittySt '.*$' contains=kittyNumber,kittyColor
-syn match kittyColor '#[0-9A-Fa-f]\{6,8}' contained
-syn match kittyNumber '[0-9]\+\.\?[0-9]*' contained
+syn match kittyColor '#\x\{3,8}' contained
+syn match kittyNumber '[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?' contained contains=kittyUnit
+syn match kittyUnit '\(px\|pt\|em\)' contained
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
 syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
@@ -37,6 +38,7 @@ hi def link kittyInvalidKeyword Error
 hi def link kittyInclude Include
 hi def link kittyColor Number
 hi def link kittyNumber Number
+hi def link kittyUnit Type
 
 let b:current_syntax = "kitty"
 
