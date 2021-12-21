@@ -19,7 +19,7 @@ syn match kittyInvalidKeyword '\S*' contained
 
 
 syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
-syn match kittyActionKW '\s*\S*\s*' contained contains=kittyAction,kittyInvalidAction
+syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyInvalidAction
 syn match kittyInvalidAction '\S*' contained
 
 
