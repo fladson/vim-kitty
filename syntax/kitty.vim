@@ -1,6 +1,6 @@
 syn match kittySt '.*$' contains=kittyNumber,kittyColor
 syn match kittyColor '#\x\{3,8}' contained
-syn match kittyNumber '[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?' contained contains=kittyUnit
+syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained contains=kittyUnit
 syn match kittyUnit '\(px\|pt\|em\)' contained
 " Match keywords only at the start of the line. Must come before other rules
 " matching start of line
