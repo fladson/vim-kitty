@@ -2,8 +2,7 @@ syn match kittySt '.*$' contains=kittyNumber,kittyColor
 syn match kittyColor '#\x\{3,8}' contained
 syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained contains=kittyUnit
 syn match kittyUnit '\(px\|pt\|em\)' contained
-" Match keywords only at the start of the line. Must come before other rules
-" matching start of line
+
 syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
