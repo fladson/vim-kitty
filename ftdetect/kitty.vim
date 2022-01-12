@@ -1,1 +1,1 @@
-autocmd! BufNewFile,BufRead kitty.conf setfiletype kitty,*/kitty/*.conf,*/*.session
+autocmd! BufNewFile,BufRead kitty.conf,*/kitty/*.conf,*/*.session setfiletype kitty
