@@ -29,6 +29,14 @@ use "fladson/vim-kitty"
 Just clone the repo and copy the files to the proper folders.
 
 ```sh
+# for vim
+git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
+mkdir -p ~/.vim/after/syntax/
+mv /tmp/vim-kitty/after/syntax/vim-kitty ~/.vim/after/syntax/vim-kitty
+rm -rf /tmp/vim-kitty
+```
+
+```sh
 # for nvim
 git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
 mkdir -p ~/.config/nvim/syntax
