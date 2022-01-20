@@ -1,44 +1,39 @@
+syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
+syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
+syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
+
+" the order here matters
 syn match kittySt '.*$' contains=kittyNumber,kittyColor
 syn match kittyColor '#\x\{3,8}' contained
 syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained contains=kittyUnit
 syn match kittyUnit '\(px\|pt\|em\)' contained
-
 syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
-syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
-syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
-syn keyword kittyTodo contained TODO FIXME XXX contained
 syn match kittyInclude /^include/ display
-
-" match map and mouse_map to highlight bindable actions
-syn match kittyMap '^\(mouse_\)\?map'
-			\ nextgroup=kittyKeybind
-
+syn match kittyMap '^\(mouse_\)\?map' nextgroup=kittyKeybind
 syn match kittyInvalidKeyword '\S*' contained
-
-syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
 syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyInvalidAction
 syn match kittyInvalidAction '\S*' contained
 
-syn keyword kittyMod contained ctrl alt shift cmd super hyper meta kitty_mod
-
-hi def link kittyComment Comment
-hi def link kittyTodo Todo
-hi def link kittyString String
-hi def link kittyKeyword Keyword
 hi def link kittyAction Function
-hi def link kittyMap Keyword
-hi def link kittyKeybind Constant
-hi def link kittyMod Constant
+hi def link kittyColor Number
+hi def link kittyComment Comment
+hi def link kittyInclude Include
 hi def link kittyInvalidAction Error
 hi def link kittyInvalidKeyword Error
-hi def link kittyInclude Include
-hi def link kittyColor Number
+hi def link kittyKeybind Constant
+hi def link kittyKeyword Keyword
+hi def link kittyMap Keyword
+hi def link kittyMod Constant
 hi def link kittyNumber Number
+hi def link kittyString String
+hi def link kittyTodo Todo
 hi def link kittyUnit Type
 
 let b:current_syntax = "kitty"
 
+syn keyword kittyMod contained ctrl alt shift cmd super hyper meta kitty_mod
+syn keyword kittyTodo contained TODO FIXME XXX contained
 " START GENERATED CODE
 syn keyword kittyKeyword contained
  \ action_alias active_border_color active_tab_background active_tab_font_style active_tab_foreground active_tab_title_template adjust_baseline adjust_column_width
