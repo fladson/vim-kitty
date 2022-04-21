@@ -2,7 +2,7 @@
 
 Syntax highlighting for Kitty terminal config files.
 
-Keywords based on `v0.24.0`
+Keywords based on `v0.25.0`
 
 ## File type detection
 
@@ -20,6 +20,7 @@ Plug 'fladson/vim-kitty'
 ```
 
 ### packer
+
 ```vim
 use "fladson/vim-kitty"
 ```
