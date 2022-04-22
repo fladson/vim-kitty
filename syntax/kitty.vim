@@ -7,10 +7,10 @@ syn match kittySt '.*$' contains=kittyNumber,kittyColor
 syn match kittyColor '#\x\{3,8}' contained
 syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained contains=kittyUnit
 syn match kittyUnit '\(px\|pt\|em\)' contained
-syn match kittyKW '^\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
+syn match kittyKW '^\s*\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
-syn match kittyInclude /^include/ display
-syn match kittyMap '^\(mouse_\)\?map' nextgroup=kittyKeybind
+syn match kittyInclude /^\s*include/ display
+syn match kittyMap '^\s*\(mouse_\)\?map' nextgroup=kittyKeybind
 syn match kittyInvalidKeyword '\S*' contained
 syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyInvalidAction
 syn match kittyInvalidAction '\S*' contained
