@@ -9,7 +9,7 @@ syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained c
 syn match kittyUnit '\(px\|pt\|em\)' contained
 syn match kittyKW '^\s*\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
-syn match kittyInclude /^\s*\(glob\)?include/ display
+syn match kittyInclude /^\s*\(env\|glob\)?include/ display
 syn match kittyMap '^\s*\(mouse_\)\?map' nextgroup=kittyKeybind
 syn match kittyInvalidKeyword '\S*' contained
 syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyInvalidAction
