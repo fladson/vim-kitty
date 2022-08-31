@@ -2,7 +2,7 @@
 
 Syntax highlighting for Kitty terminal config files.
 
-Keywords based on `v0.25.2`
+Keywords based on `v0.26.1`
 
 ## File type detection
 
