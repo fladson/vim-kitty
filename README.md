@@ -4,6 +4,8 @@ Syntax highlighting for Kitty terminal config files.
 
 Keywords based on `v0.26.2`
 
+See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual explanation of what this plugin does.
+
 ## File type detection
 
 Any `*.conf` or `*.session` files in kitty's configuration directory is considered.
