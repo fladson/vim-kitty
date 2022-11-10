@@ -35,7 +35,7 @@ Just clone the repo and copy the files to the proper folders.
 # for vim
 git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
 mkdir -p ~/.vim/after/syntax/
-mv /tmp/vim-kitty/after/syntax/vim-kitty ~/.vim/after/syntax/vim-kitty
+mv /tmp/vim-kitty ~/.vim/after/syntax/vim-kitty
 rm -rf /tmp/vim-kitty
 ```
 
