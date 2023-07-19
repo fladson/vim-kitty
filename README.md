@@ -2,7 +2,7 @@
 
 Syntax highlighting for Kitty terminal config files.
 
-Keywords based on `v0.28.1`
+Keywords based on `v0.29.1`
 
 See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual explanation of what this plugin does.
 
