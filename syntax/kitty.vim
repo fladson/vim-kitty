@@ -11,6 +11,7 @@ syn match kittyKW '^\s*\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn match kittyInclude '^\s*\(env\|glob\)\?include' display
 syn match kittyMap '^\s*\(mouse_\)\?map' nextgroup=kittyKeybind
+syn match kittyContinue '^\(\s\+\)\?\\'
 syn match kittyInvalidKeyword '\S*' contained
 syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyEvent,kittyInvalidAction
 syn match kittyInvalidAction '\S*' contained
@@ -18,6 +19,7 @@ syn match kittyInvalidAction '\S*' contained
 hi def link kittyAction Function
 hi def link kittyColor Number
 hi def link kittyComment Comment
+hi def link kittyContinue kittySt
 hi def link kittyEvent Function
 hi def link kittyInclude Include
 hi def link kittyInvalidAction Error
