@@ -11,6 +11,7 @@ syn match kittyKW '^\s*\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=
 syn match kittyComment /^\s*#.*$/ contains=kittyTodo
 syn match kittyInclude '^\s*\(env\|glob\)\?include' display
 syn match kittyMap '^\s*\(mouse_\)\?map' nextgroup=kittyKeybind
+syn match kittyContinue '^\(\s\+\)\?\\'
 syn match kittyInvalidKeyword '\S*' contained
 syn match kittyActionKW '\s*\S*' contained contains=kittyAction,kittyEvent,kittyInvalidAction
 syn match kittyInvalidAction '\S*' contained
@@ -18,6 +19,7 @@ syn match kittyInvalidAction '\S*' contained
 hi def link kittyAction Function
 hi def link kittyColor Number
 hi def link kittyComment Comment
+hi def link kittyContinue kittySt
 hi def link kittyEvent Function
 hi def link kittyInclude Include
 hi def link kittyInvalidAction Error
@@ -97,7 +99,7 @@ syn keyword kittyAction contained
  \ close_tab close_window close_window_with_confirmation combine copy_and_clear_or_interrupt copy_ansi_to_clipboard copy_or_interrupt copy_to_buffer
  \ copy_to_clipboard create_marker debug_config detach_tab detach_window disable_ligatures_in discard_event dump_lines_with_attrs
  \ edit_config_file eighth_window fifth_window first_window focus_visible_window fourth_window goto_layout goto_tab
- \ hide_macos_app hide_macos_other_apps input_unicode_character kitten kitty_shell last_used_layout launch layout_action
+ \ hide_macos_app hide_macos_other_apps inactive_text_alpha input_unicode_character kitten kitty_shell last_used_layout launch layout_action
  \ load_config_file minimize_macos_window mouse_click_url mouse_click_url_or_select mouse_handle_click mouse_select_command_output mouse_selection mouse_show_command_output
  \ move_tab_backward move_tab_forward move_window move_window_backward move_window_forward move_window_to_top neighboring_window new_os_window
  \ new_os_window_with_cwd new_tab new_tab_with_cwd new_window new_window_with_cwd next_layout next_tab next_window
