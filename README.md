@@ -1,8 +1,7 @@
 <h1 align="center">😺 vim-kitty</h1>
 
 <p align="center">
-    <i>Syntax highlighting for Kitty terminal config files for Vim and
-        Neovim.</i>
+    <i>Vim and Neovim syntax highlighting for Kitty terminal config files.</i>
 </p>
 
 ## 📜 Filetype detection
