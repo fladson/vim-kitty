@@ -1,52 +1,46 @@
-# vim-kitty - kitty config syntax highlighting for vim
+<h1 align="center">😺 vim-kitty</h1>
 
-Syntax highlighting for Kitty terminal config files.
+<p align="center">
+    <i>Syntax highlighting for Kitty terminal config files for Vim and
+        Neovim.</i>
+</p>
 
-Keywords based on `v0.36.2`
+## 📜 Filetype detection
 
-See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual explanation of what this plugin does.
-
-## File type detection
-
-Any `*.conf` or `*.session` files in kitty's configuration directory is considered.
+Any `*.conf` or `*.session` files in kitty's configuration directory is
+considered.
 
 You can always add `# vim:ft=kitty` at the beginning of any file to make sure
 the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 
-## Installation instructions
+## 🚀 Installation
 
-### vim-plug
+### [lazy.nvim](https://lazy.folke.io/)
+
+> [!IMPORTANT]
+> Lazy.nvim only works in Neovim and is the recommended method for it.
+
+```lua
+{
+    "warbacon/vim-kitty",
+    ft = "kitty",
+}
+```
+
+### [vim-plug](https://github.com/junegunn/vim-plug)
+
+> [!NOTE]
+> Recommended method for Vim. Also works in Neovim but this is **Vimscript**.
 
 ```vim
-Plug 'fladson/vim-kitty'
+Plug "warbacon/vim-kitty"
 ```
 
-### packer
+## ❓ Extra
 
-```vim
-use "fladson/vim-kitty"
-```
+Keywords based on `v0.36.2`. The `gen-syntax.py` script syncs keywords with
+your current Kitty version, check inside of it for instructions.
 
-### Manual
-
-Just clone the repo and copy the files to the proper folders.
-
-```sh
-# for vim
-git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
-mkdir -p ~/.vim/after/syntax/
-mv /tmp/vim-kitty/syntax/* ~/.vim/after/syntax/
-rm -rf /tmp/vim-kitty
-```
-
-```sh
-# for nvim
-git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
-mkdir -p ~/.config/nvim/syntax
-mkdir -p ~/.config/nvim/ftdetect
-mkdir -p ~/.config/nvim/ftplugin
-mv /tmp/vim-kitty/syntax/* ~/.config/nvim/syntax
-mv /tmp/vim-kitty/ftdetect/kitty.vim ~/.config/nvim/ftdetect
-mv /tmp/vim-kitty/ftplugin/kitty.vim ~/.config/nvim/ftplugin
-rm -rf /tmp/vim-kitty
-```
+This is a fork of the [fladson plugin](https://github.com/fladson/vim-kitty)
+which is intended to be always in sync with the latest version of Kitty and may
+introduce some improvements in the future.
