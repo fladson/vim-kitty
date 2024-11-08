@@ -27,7 +27,7 @@ the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 
 ```lua
 {
-    "warbacon/vim-kitty",
+    "fladson/vim-kitty",
     ft = "kitty",
     tag = "*"  -- You can select a tagged version
 }
@@ -40,7 +40,7 @@ the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 
 ```vim
 " You can select a tagged version
-Plug 'warbacon/vim-kitty', { 'tag': '*' }
+Plug 'fladson/vim-kitty', { 'tag': '*' }
 ```
 
 ### Manual
