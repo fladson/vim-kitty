@@ -1,6 +1,7 @@
 syn region kittyKeybind start=' ' end=' ' contains=kittyMod,kittyKey,kittyKeyComb contained nextgroup=kittyActionKW
 syn region kittyString start=+"+ skip=+\\\\\|\\"+ end=+"+ oneline
 syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
+syn spell notoplevel
 
 " the order here matters
 syn match kittySt '.*$' contains=kittyNumber,kittyColor
@@ -8,7 +9,7 @@ syn match kittyColor '#\x\{3,8}' contained
 syn match kittyNumber '\s[+-]\?\d\+\.\?\d*\(%\|px\|pt\|em\)\?'ms=s+1 contained contains=kittyUnit
 syn match kittyUnit '\(px\|pt\|em\)' contained
 syn match kittyKW '^\s*\S*' contains=kittyKeyword,kittyInvalidKeyword nextgroup=kittySt
-syn match kittyComment /^\s*#.*$/ contains=kittyTodo
+syn match kittyComment /^\s*#.*$/ contains=kittyTodo,@Spell
 syn match kittyInclude '^\s*\(env\|glob\)\?include' display
 syn match kittyMap '^\s*\(mouse_\)\?map' nextgroup=kittyKeybind
 syn match kittyContinue '^\(\s\+\)\?\\'
