@@ -1,46 +1,62 @@
-# vim-kitty - kitty config syntax highlighting for vim
+<h1 align="center">😺 vim-kitty</h1>
 
-Syntax highlighting for Kitty terminal config files.
+<p align="center">
+    <i> (Neo)vim syntax highlighting for Kitty terminal configuration and
+        session files. </i>
+</p>
 
-Keywords based on `v0.37.0`
+Keywords based on `v0.37.0`.
 
-See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual explanation of what this plugin does.
+See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual
+explanation of what this plugin does.
 
-## File type detection
+## 📜 Filetype detection
 
-Any `*.conf` or `*.session` files in kitty's configuration directory is considered.
+Any `*.conf` or `*.session` files in kitty's configuration directory is
+considered.
 
 You can always add `# vim:ft=kitty` at the beginning of any file to make sure
 the syntax is loaded, or you can set it temporarily with `:set ft=kitty`.
 
-## Installation instructions
+## 🚀 Installation
 
-### vim-plug
+### [lazy.nvim](https://lazy.folke.io/)
 
-```vim
-Plug 'fladson/vim-kitty'
+> [!IMPORTANT]
+> Lazy.nvim only works in Neovim and is the recommended method for it.
+
+```lua
+{
+    "warbacon/vim-kitty",
+    ft = "kitty",
+    tag = "*"  -- You can select a tagged version
+}
 ```
 
-### packer
+### [vim-plug](https://github.com/junegunn/vim-plug)
+
+> [!NOTE]
+> Recommended method for Vim. Also works in Neovim but this is _Vimscript_.
 
 ```vim
-use "fladson/vim-kitty"
+" You can select a tagged version
+Plug 'warbacon/vim-kitty', { 'tag': '*' }
 ```
 
 ### Manual
 
-Just clone the repo and copy the files to the proper folders.
+For Vim:
 
 ```sh
-# for vim
 git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
 mkdir -p ~/.vim/after/syntax/
 mv /tmp/vim-kitty/syntax/* ~/.vim/after/syntax/
 rm -rf /tmp/vim-kitty
 ```
 
+For Neovim:
+
 ```sh
-# for nvim
 git clone https://github.com/fladson/vim-kitty.git /tmp/vim-kitty
 mkdir -p ~/.config/nvim/syntax
 mkdir -p ~/.config/nvim/ftdetect
