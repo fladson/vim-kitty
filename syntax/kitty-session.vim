@@ -13,16 +13,20 @@ syn region kittyString start=+'+ skip=+\\\\\|\\'+ end=+'+ oneline
 syn keyword kittyTodo contained TODO FIXME XXX contained
 
 syn keyword kittySessionCommand
+	\ launch
 	\ new_tab
 	\ new_os_window
 	\ layout
-	\ launch
 	\ focus
+	\ focus_os_window
 	\ enabled_layouts
 	\ cd
 	\ title
 	\ os_window_size
 	\ os_window_class
+	\ os_window_state
+	\ resize_window
+	\ focus_matching_window
 
 hi def link kittySessionCommand Keyword
 hi def link kittyComment Comment
