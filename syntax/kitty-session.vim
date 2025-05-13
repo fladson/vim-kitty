@@ -25,6 +25,7 @@ syn keyword kittySessionCommand
 	\ os_window_size
 	\ os_window_class
 	\ os_window_state
+	\ os_window_name
 	\ resize_window
 	\ focus_matching_window
 
