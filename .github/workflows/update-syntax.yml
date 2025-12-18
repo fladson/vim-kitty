@@ -25,6 +25,10 @@ jobs:
           echo "::notice title=Kitty Version::$VERSION"
       - name: Run syntax generation script
         run: kitty +launch gen-syntax.py
+      - name: Update README version
+        run: |
+          VERSION=${{ steps.kitty-version.outputs.version }}
+          sed -i "s/Keywords based on \`v[0-9.]*\`\./Keywords based on \`v$VERSION\`./" README.md
       - name: Check for changes
         id: check-changes
         run: |
