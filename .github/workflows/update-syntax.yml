@@ -22,19 +22,18 @@ jobs:
         run: |
           VERSION=$(kitty --version | cut -d' ' -f2)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Kitty version: $VERSION"
+          echo "::notice title=Kitty Version::$VERSION"
       - name: Run syntax generation script
-        run: |
-          kitty +launch gen-syntax.py
+        run: kitty +launch gen-syntax.py
       - name: Check for changes
         id: check-changes
         run: |
           if git diff --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
+            echo "::notice title=Syntax Update::No changes detected in syntax files"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected"
+            echo "::notice title=Syntax Update::Changes detected - will create PR"
           fi
       - name: Create Pull Request
         if: steps.check-changes.outputs.changed == 'true'
