@@ -26,17 +26,8 @@ jobs:
           CURRENT_VERSION=$(grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' README.md)
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
           
-          # Get the previous commit's version
-          git checkout HEAD^1 -- README.md 2>/dev/null || PREV_VERSION=""
-          if [ -f README.md ]; then
-            PREV_VERSION=$(grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' README.md || echo "")
-          else
-            PREV_VERSION=""
-          fi
-          
-          # Restore current README.md
-          git checkout HEAD -- README.md
-          
+          # Get the previous commit's version using git show
+          PREV_VERSION=$(git show HEAD^1:README.md 2>/dev/null | grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' || echo "")
           echo "prev_version=$PREV_VERSION" >> $GITHUB_OUTPUT
           
           if [ "$CURRENT_VERSION" != "$PREV_VERSION" ] && [ -n "$PREV_VERSION" ]; then
