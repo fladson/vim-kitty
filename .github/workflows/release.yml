@@ -1,0 +1,98 @@
+name: Create Tagged Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags
+      
+      - name: Check if kitty version changed
+        id: check_version
+        run: |
+          # Extract the current kitty version from README.md
+          CURRENT_VERSION=$(grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' README.md)
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          
+          # Get the previous commit's version
+          git checkout HEAD^1 -- README.md 2>/dev/null || PREV_VERSION=""
+          if [ -f README.md ]; then
+            PREV_VERSION=$(grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' README.md || echo "")
+          else
+            PREV_VERSION=""
+          fi
+          
+          # Restore current README.md
+          git checkout HEAD -- README.md
+          
+          echo "prev_version=$PREV_VERSION" >> $GITHUB_OUTPUT
+          
+          if [ "$CURRENT_VERSION" != "$PREV_VERSION" ] && [ -n "$PREV_VERSION" ]; then
+            echo "version_changed=true" >> $GITHUB_OUTPUT
+            echo "Kitty version changed from $PREV_VERSION to $CURRENT_VERSION"
+          else
+            echo "version_changed=false" >> $GITHUB_OUTPUT
+            echo "Kitty version unchanged or first version"
+          fi
+      
+      - name: Determine next tag version
+        if: steps.check_version.outputs.version_changed == 'true'
+        id: next_version
+        run: |
+          # Get the latest tag
+          LATEST_TAG=$(git tag -l 'v*' | sort -V | tail -n 1)
+          
+          if [ -z "$LATEST_TAG" ]; then
+            # No tags yet, start with v0.1.0
+            NEXT_VERSION="0.1.0"
+          else
+            # Extract version numbers
+            TAG_VERSION=${LATEST_TAG#v}
+            MAJOR=$(echo $TAG_VERSION | cut -d. -f1)
+            MINOR=$(echo $TAG_VERSION | cut -d. -f2)
+            PATCH=$(echo $TAG_VERSION | cut -d. -f3)
+            
+            # Increment minor version
+            MINOR=$((MINOR + 1))
+            NEXT_VERSION="$MAJOR.$MINOR.0"
+          fi
+          
+          echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "Next version will be: v$NEXT_VERSION"
+      
+      - name: Create tag and release
+        if: steps.check_version.outputs.version_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          KITTY_VERSION="${{ steps.check_version.outputs.current_version }}"
+          TAG_VERSION="v${{ steps.next_version.outputs.next_version }}"
+          TAG_MESSAGE="Sync with v$KITTY_VERSION"
+          
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Create annotated tag
+          git tag -a "$TAG_VERSION" -m "$TAG_MESSAGE"
+          
+          # Push tag
+          git push origin "$TAG_VERSION"
+          
+          # Create GitHub release
+          gh release create "$TAG_VERSION" \
+            --title "$TAG_VERSION" \
+            --notes "$TAG_MESSAGE" \
+            --verify-tag
