@@ -22,12 +22,15 @@ jobs:
       - name: Check if kitty version changed
         id: check_version
         run: |
+          # Define the regex pattern for extracting the kitty version
+          VERSION_PATTERN='Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+'
+          
           # Extract the current kitty version from README.md
-          CURRENT_VERSION=$(grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' README.md)
+          CURRENT_VERSION=$(grep -oP "$VERSION_PATTERN" README.md)
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
           
           # Get the previous commit's version using git show
-          PREV_VERSION=$(git show HEAD^1:README.md 2>/dev/null | grep -oP 'Keywords based on `v\K[0-9]+\.[0-9]+\.[0-9]+' || echo "")
+          PREV_VERSION=$(git show HEAD^1:README.md 2>/dev/null | grep -oP "$VERSION_PATTERN" || echo "")
           echo "prev_version=$PREV_VERSION" >> $GITHUB_OUTPUT
           
           if [ "$CURRENT_VERSION" != "$PREV_VERSION" ] && [ -n "$PREV_VERSION" ]; then
@@ -42,8 +45,8 @@ jobs:
         if: steps.check_version.outputs.version_changed == 'true'
         id: next_version
         run: |
-          # Get the latest tag
-          LATEST_TAG=$(git tag -l 'v*' | sort -V | tail -n 1)
+          # Get the latest tag using git's version sorting
+          LATEST_TAG=$(git tag -l 'v*' --sort=-version:refname | head -n 1)
           
           if [ -z "$LATEST_TAG" ]; then
             # No tags yet, start with v0.1.0
