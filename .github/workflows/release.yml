@@ -1,3 +1,11 @@
+# This workflow automatically creates a tagged release when the Kitty version
+# number in README.md is updated. It detects changes to the version line
+# "Keywords based on `v<version>`" and creates a new tag with an incremented
+# minor version (e.g., v0.1.0 -> v0.2.0) and a GitHub release.
+#
+# The workflow only triggers when README.md changes and the Kitty version
+# differs from the previous commit.
+
 name: Create Tagged Release
 
 on:
