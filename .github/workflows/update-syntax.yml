@@ -1,39 +1,31 @@
-name: Update Kitty Syntax Files
+name: Update Syntax
 
 on:
   schedule:
     # Run every week on Monday at 00:00 UTC
     - cron: '0 0 * * 1'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   update-syntax:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
       - name: Install latest Kitty
         run: |
           curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
           # Add kitty to PATH
           echo "$HOME/.local/kitty.app/bin" >> $GITHUB_PATH
-      
       - name: Get Kitty version
         id: kitty-version
         run: |
-          # Wait for PATH update to take effect
-          export PATH="$HOME/.local/kitty.app/bin:$PATH"
           VERSION=$(kitty --version | cut -d' ' -f2)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Kitty version: $VERSION"
-      
       - name: Run syntax generation script
         run: |
-          export PATH="$HOME/.local/kitty.app/bin:$PATH"
           kitty +launch gen-syntax.py
-      
       - name: Check for changes
         id: check-changes
         run: |
@@ -44,17 +36,16 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changes detected"
           fi
-      
       - name: Create Pull Request
         if: steps.check-changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update syntax for Kitty ${{ steps.kitty-version.outputs.version }}"
           title: "Update syntax for Kitty ${{ steps.kitty-version.outputs.version }}"
           body: |
             This PR updates the Kitty syntax files to support Kitty version ${{ steps.kitty-version.outputs.version }}.
-            
-            Generated automatically by the update-syntax workflow.
+
+            Generated automatically by the [update-syntax workflow](https://github.com/${{ github.repository }}/actions/workflows/update-syntax.yml).
           branch: auto-update-syntax-${{ steps.kitty-version.outputs.version }}
           delete-branch: true
