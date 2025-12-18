@@ -5,9 +5,10 @@
         session files. </i>
 </p>
 
+
 <!-- NB: Formatting of the following line should not be changed. -->
 <!--     It is used for inferring whether a tag should be created. -->
-Keywords based on `v0.42.1`.
+Keywords based on `v0.44.0`.
 
 See [screenshot](https://github.com/fladson/vim-kitty/wiki) for a visual
 explanation of what this plugin does.
